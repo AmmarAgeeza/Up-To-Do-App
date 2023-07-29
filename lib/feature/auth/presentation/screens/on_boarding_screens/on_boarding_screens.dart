@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:to_do_app/feature/auth/data/model/on_boarding_model.dart';
 
@@ -14,7 +13,6 @@ class OnBoaringScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: AppColors.background,
           body: Padding(
             padding: const EdgeInsets.all(24),
             child: PageView.builder(
@@ -30,10 +28,8 @@ class OnBoaringScreens extends StatelessWidget {
                             child: TextButton(
                               child: Text(
                                 AppStrings.skip,
-                                style: GoogleFonts.lato(
-                                  color: AppColors.white.withOpacity(.44),
-                                  fontSize: 16,
-                                ),
+                                style: Theme.of(context).textTheme.displaySmall
+                                ,
                               ),
                               onPressed: () {
                                 controller.jumpToPage(2);
@@ -72,10 +68,7 @@ class OnBoaringScreens extends StatelessWidget {
                     //title
                     Text(
                       OnBoardingModel.onBoardingScreens[index].title,
-                      style: GoogleFonts.lato(
-                          color: AppColors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 32),
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                     const SizedBox(
                       height: 42,
@@ -85,8 +78,7 @@ class OnBoaringScreens extends StatelessWidget {
                     Text(
                       OnBoardingModel.onBoardingScreens[index].subTitle,
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(
-                          color: AppColors.white, fontSize: 16),
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     const SizedBox(
                       height: 90,
@@ -100,10 +92,7 @@ class OnBoaringScreens extends StatelessWidget {
                             ? TextButton(
                                 child: Text(
                                   AppStrings.back,
-                                  style: GoogleFonts.lato(
-                                    color: AppColors.white.withOpacity(.44),
-                                    fontSize: 16,
-                                  ),
+                                  style:Theme.of(context).textTheme.displaySmall,
                                 ),
                                 onPressed: () {
                                   controller.previousPage(
@@ -124,11 +113,7 @@ class OnBoaringScreens extends StatelessWidget {
                                           const Duration(milliseconds: 1000),
                                       curve: Curves.fastLinearToSlowEaseIn);
                                 },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.primary,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4))),
+                                style: Theme.of(context).elevatedButtonTheme.style,
                                 child: const Text(
                                   AppStrings.next,
                                 ),
@@ -141,11 +126,7 @@ class OnBoaringScreens extends StatelessWidget {
                                       MaterialPageRoute(
                                           builder: (_) => const HomeScreen()));
                                 },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.primary,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4))),
+                                style: Theme.of(context).elevatedButtonTheme.style,
                                 child: const Text(
                                   AppStrings.getStarted,
                                 ),
