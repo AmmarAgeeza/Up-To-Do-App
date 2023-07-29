@@ -30,4 +30,5 @@ class AppStrings {
   static const String taskCompleted  = 'Task Completed';
   static const String deleteTask  = 'Delete Task';
   static const String cancel  = 'Cancel';
+  static const String onBoardingKey  = 'onBoaring';
 }
