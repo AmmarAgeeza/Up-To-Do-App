@@ -3,9 +3,12 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:to_do_app/core/database/cache/cache_helper.dart';
 import 'package:to_do_app/feature/auth/data/model/on_boarding_model.dart';
 
+import '../../../../../core/commons/commons.dart';
 import '../../../../../core/services/service_locator.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/widgets/custom_text_button.dart';
 import '../../../../task/presentation/screens/home_screen.dart';
 
 class OnBoaringScreens extends StatelessWidget {
@@ -27,11 +30,8 @@ class OnBoaringScreens extends StatelessWidget {
                 index != 2
                     ? Align(
                         alignment: Alignment.centerLeft,
-                        child: TextButton(
-                          child: Text(
-                            AppStrings.skip,
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
+                        child: CustomTextButton(
+                          text: AppStrings.skip,
                           onPressed: () {
                             controller.jumpToPage(2);
                           },
@@ -89,15 +89,13 @@ class OnBoaringScreens extends StatelessWidget {
                   children: [
                     //back button
                     index != 0
-                        ? TextButton(
-                            child: Text(
-                              AppStrings.back,
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
+                        ? CustomTextButton(
+                            text: AppStrings.back,
                             onPressed: () {
                               controller.previousPage(
-                                  duration: const Duration(milliseconds: 1000),
-                                  curve: Curves.fastLinearToSlowEaseIn);
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.fastLinearToSlowEaseIn,
+                              );
                             },
                           )
                         : Container(),
@@ -105,18 +103,16 @@ class OnBoaringScreens extends StatelessWidget {
                     const Spacer(),
                     //next Button
                     index != 2
-                        ? ElevatedButton(
+                        ? CustomButton(
+                            text: AppStrings.next,
                             onPressed: () {
                               controller.nextPage(
                                   duration: const Duration(milliseconds: 1000),
                                   curve: Curves.fastLinearToSlowEaseIn);
                             },
-                            style: Theme.of(context).elevatedButtonTheme.style,
-                            child: const Text(
-                              AppStrings.next,
-                            ),
                           )
-                        : ElevatedButton(
+                        : CustomButton(
+                            text: AppStrings.getStarted,
                             onPressed: () async {
                               //navigate to home screen
                               await sl<CacheHelper>()
@@ -125,19 +121,13 @@ class OnBoaringScreens extends StatelessWidget {
                                       value: true)
                                   .then((value) {
                                 print('onBoarding is Visited');
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const HomeScreen()));
+                                navigate(
+                                    context: context,
+                                    screen: const HomeScreen());
                               }).catchError((e) {
                                 print(e.toString());
                               });
-                            },
-                            style: Theme.of(context).elevatedButtonTheme.style,
-                            child: const Text(
-                              AppStrings.getStarted,
-                            ),
-                          ),
+                            })
                   ],
                 )
               ],
