@@ -48,6 +48,10 @@ class HomeScreen extends StatelessWidget {
               ),
               //no tasks
               // noTasksWidget(context),
+              const TaskComponent(),
+              const TaskComponent(),
+              const TaskComponent(),
+              
             ],
           ),
         ),
@@ -63,19 +67,96 @@ class HomeScreen extends StatelessWidget {
 
   Column noTasksWidget(BuildContext context) {
     return Column(
+      children: [
+        Image.asset(AppAssets.noTasks),
+        Text(
+          AppStrings.noTaskTitle,
+          style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                fontSize: 24,
+              ),
+        ),
+        Text(
+          AppStrings.noTaskSubTitle,
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+      ],
+    );
+  }
+}
+
+class TaskComponent extends StatelessWidget {
+  const TaskComponent({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 132,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: AppColors.red,
+        borderRadius: BorderRadius.circular(16),
+      
+      ),
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        children: [
+          //column
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(AppAssets.noTasks),
+                //text
                 Text(
-                  AppStrings.noTaskTitle,
-                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                        fontSize: 24,
-                      ),
+                  'Task 1',
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
+                const SizedBox(height: 8),
+          
+                //row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.timer,
+                      color: AppColors.white,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      '09:33 PM - 09:48 PM',
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                //text
                 Text(
-                  AppStrings.noTaskSubTitle,
-                  style: Theme.of(context).textTheme.displayMedium,
+                  'Learn Dart',
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
               ],
-            );
+            ),
+          ),
+          
+          //divider
+          Container(
+            height: 75,
+            width: 1,
+            color: Colors.white,
+            margin: const EdgeInsets.only(right: 10),
+          ),
+          // const SizedBox(width: 10,),
+          //text
+          RotatedBox(
+            quarterTurns: 3,
+            child: Text(
+              AppStrings.toDo,
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
