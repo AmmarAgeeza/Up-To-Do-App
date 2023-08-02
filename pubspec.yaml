@@ -29,10 +29,12 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
+  date_picker_timeline: ^1.2.5
   flutter:
     sdk: flutter
   get_it: ^7.6.0
   google_fonts: ^5.1.0
+  intl: ^0.18.1
   shared_preferences: ^2.2.0
   smooth_page_indicator: ^1.1.0
 
