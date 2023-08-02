@@ -8,7 +8,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: Theme.of(context).elevatedButtonTheme.style,
+      style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
+        backgroundColor:MaterialStateProperty.all(Colors.red) 
+      ),
       child: Text(
         text,
       ),

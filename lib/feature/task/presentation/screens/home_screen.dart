@@ -2,6 +2,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
+import 'package:to_do_app/core/widgets/custom_button.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -48,10 +49,58 @@ class HomeScreen extends StatelessWidget {
               ),
               //no tasks
               // noTasksWidget(context),
-              const TaskComponent(),
-              const TaskComponent(),
-              const TaskComponent(),
-              
+              InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          padding: const EdgeInsets.all(24),
+                          height: 240,
+                          color: AppColors.deepGrey,
+                          child: Column(
+                            children: [
+                              //taskCompleted
+                              SizedBox(
+                                height: 48,
+                                width: double.infinity,
+                                child: CustomButton(
+                                  text: AppStrings.taskCompleted,
+                                  onPressed: () {},
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+
+                              //deleteTask
+                              SizedBox(
+                                height: 48,
+                                width: double.infinity,
+                                child: CustomButton(
+                                  text: AppStrings.deleteTask,
+                                  onPressed: () {},
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              //cancel
+                              SizedBox(
+                                height: 48,
+                                width: double.infinity,
+                                child: CustomButton(
+                                  text: AppStrings.cancel,
+                                  onPressed: () {},
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: const TaskComponent()),
             ],
           ),
         ),
@@ -97,7 +146,6 @@ class TaskComponent extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.red,
         borderRadius: BorderRadius.circular(16),
-      
       ),
       margin: const EdgeInsets.only(bottom: 16),
       child: Row(
@@ -113,7 +161,7 @@ class TaskComponent extends StatelessWidget {
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(height: 8),
-          
+
                 //row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -138,7 +186,7 @@ class TaskComponent extends StatelessWidget {
               ],
             ),
           ),
-          
+
           //divider
           Container(
             height: 75,
