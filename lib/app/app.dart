@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 
 import '../core/theme/theme.dart';
@@ -9,13 +10,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        // title: 'To-Do App', =>//hard coded
-        title: AppStrings.appName,
-        theme: getAppTheme(),
-        darkTheme: getAppDarkTheme(),
-        themeMode: ThemeMode.light,
-        debugShowCheckedModeBanner: false,
-        home: const SplashScreen());
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      builder:(context,child){
+        return MaterialApp(
+          // title: 'To-Do App', =>//hard coded
+          title: AppStrings.appName,
+          theme: getAppTheme(),
+          darkTheme: getAppDarkTheme(),
+          themeMode: ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          home: const SplashScreen());
+      } ,
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
 
@@ -25,6 +26,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.height);
+print(MediaQuery.of(context).size.width);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -40,198 +43,205 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //! Title
-              AddTaskComponent(
-                controller: titleController,
-                tilte: AppStrings.tilte,
-                hintText: AppStrings.tilteHint,
-              ),
-              const SizedBox(height: 24),
-              //! Note
-              AddTaskComponent(
-                controller: noteController,
-                tilte: AppStrings.note,
-                hintText: AppStrings.notehint,
-              ),
-              const SizedBox(height: 24),
-              //! Date
-              AddTaskComponent(
-                tilte: AppStrings.date,
-                hintText: DateFormat.yMd().format(currentDate),
-                suffixIcon: IconButton(
-                  onPressed: () async {
-                    DateTime? pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime(2025),
-                      // initialDatePickerMode: DatePickerMode.day,
-                      // initialEntryMode: DatePickerEntryMode.inputOnly,
-                    );
-                    setState(() {
-                      if (pickedDate != null) {
-                        currentDate = pickedDate;
-                      } else {
-                        print('pickedDate == null');
-                      }
-                    });
-                  },
-                  icon: const Icon(
-                    Icons.calendar_month_rounded,
-                    color: AppColors.white,
-                  ),
+      body: Form(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //! Title
+                AddTaskComponent(
+                  controller: titleController,
+                  tilte: AppStrings.tilte,
+                  hintText: AppStrings.tilteHint,
                 ),
-                readOnly: true,
-              ),
-              const SizedBox(height: 24),
-              //! Start - End Time
-              Row(
-                children: [
-                  // Start
-                  Expanded(
-                    child: AddTaskComponent(
-                      readOnly: true,
-                      tilte: AppStrings.startTime,
-                      hintText: startTime,
-                      suffixIcon: IconButton(
-                        onPressed: () async {
-                          TimeOfDay? pickedStartTime = await showTimePicker(
-                            context: context,
-                            initialTime: TimeOfDay.fromDateTime(DateTime.now()),
-                          );
-                          if (pickedStartTime != null) {
-                            setState(() {
-                              startTime = pickedStartTime.format(context);
-                            });
-                          } else {
-                            print('pickedStartTime ==null');
-                          }
-                        },
-                        icon: const Icon(
-                          Icons.timer_outlined,
-                          color: AppColors.white,
-                        ),
-                      ),
+                 SizedBox(height: 24.h),
+                //! Note
+                AddTaskComponent(
+                  controller: noteController,
+                  tilte: AppStrings.note,
+                  hintText: AppStrings.notehint,
+                ),
+                 SizedBox(height: 24.h),
+                //! Date
+                AddTaskComponent(
+                  tilte: AppStrings.date,
+                  hintText: DateFormat.yMd().format(currentDate),
+                  suffixIcon: IconButton(
+                    onPressed: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(2025),
+                        // initialDatePickerMode: DatePickerMode.day,
+                        // initialEntryMode: DatePickerEntryMode.inputOnly,
+                      );
+                      setState(() {
+                        if (pickedDate != null) {
+                          currentDate = pickedDate;
+                        } else {
+                          print('pickedDate == null');
+                        }
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.calendar_month_rounded,
+                      color: AppColors.white,
                     ),
                   ),
-                  const SizedBox(
-                    width: 26,
-                  ),
-                  //! end
-                  Expanded(
-                    child: AddTaskComponent(
-                      readOnly: true,
-                      tilte: AppStrings.endTime,
-                      hintText: endTime,
-                      suffixIcon: IconButton(
-                        onPressed: () async {
-                          TimeOfDay? pickedEndTime = await showTimePicker(
-                            context: context,
-                            initialTime: TimeOfDay.fromDateTime(DateTime.now()),
-                          );
-                          if (pickedEndTime != null) {
-                            setState(() {
-                              endTime = pickedEndTime.format(context);
-                            });
-                          } else {
-                            print('pickedEndTime ==null');
-                          }
-                        },
-                        icon: const Icon(
-                          Icons.timer_outlined,
-                          color: AppColors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-
-              //!Color
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  readOnly: true,
+                ),
+                 SizedBox(height: 24.h),
+                //! Start - End Time
+                Row(
                   children: [
-                    // color
-                    Text(
-                      AppStrings.color,
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-
+                    // Start
                     Expanded(
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 6,
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(width: 8),
-                        itemBuilder: (context, index) {
-                          Color getColor(index) {
-                            switch (index) {
-                              case 0:
-                                return AppColors.red;
-                              case 1:
-                                return AppColors.green;
-                              case 2:
-                                return AppColors.blueGrey;
-                              case 3:
-                                return AppColors.blue;
-                              case 4:
-                                return AppColors.orange;
-                              case 5:
-                                return AppColors.purple;
-                              default:
-                                return AppColors.grey;
-                            }
-                          }
-
-                          return GestureDetector(
-                            onTap: () {
+                      child: AddTaskComponent(
+                        readOnly: true,
+                        tilte: AppStrings.startTime,
+                        hintText: startTime,
+                        suffixIcon: IconButton(
+                          onPressed: () async {
+                            TimeOfDay? pickedStartTime = await showTimePicker(
+                              context: context,
+                              initialTime:
+                                  TimeOfDay.fromDateTime(DateTime.now()),
+                            );
+                            if (pickedStartTime != null) {
                               setState(() {
-                                currentIndex = index;
+                                startTime = pickedStartTime.format(context);
                               });
-                            },
-                            child: CircleAvatar(
-                              backgroundColor: getColor(index),
-                              child: index == currentIndex
-                                  ? const Icon(Icons.check)
-                                  : null,
-                            ),
-                          );
-                        },
+                            } else {
+                              print('pickedStartTime ==null');
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.timer_outlined,
+                            color: AppColors.white,
+                          ),
+                        ),
                       ),
                     ),
-
-                    //  const Row(
-                    //    children: [
-                    //      CircleAvatar(
-                    //       backgroundColor: AppColors.red,
-                    //      ),
-                    //      CircleAvatar(
-                    //       backgroundColor: AppColors.red,
-                    //      ),
-                    //    ],
-                    //  )
+                    const SizedBox(
+                      width: 26,
+                    ),
+                    //! end
+                    Expanded(
+                      child: AddTaskComponent(
+                        readOnly: true,
+                        tilte: AppStrings.endTime,
+                        hintText: endTime,
+                        suffixIcon: IconButton(
+                          onPressed: () async {
+                            TimeOfDay? pickedEndTime = await showTimePicker(
+                              context: context,
+                              initialTime:
+                                  TimeOfDay.fromDateTime(DateTime.now()),
+                            );
+                            if (pickedEndTime != null) {
+                              setState(() {
+                                endTime = pickedEndTime.format(context);
+                              });
+                            } else {
+                              print('pickedEndTime ==null');
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.timer_outlined,
+                            color: AppColors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              //! add Task Button
-              const Spacer(),
-              SizedBox(
-                height: 48,
-                width: double.infinity,
-                child: CustomButton(
-                  text: AppStrings.createTask,
-                  onPressed: () {},
+                 SizedBox(height: 24.h),
+
+                //!Color
+                SizedBox(
+                  height: 68.h,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // color
+                      Text(
+                        AppStrings.color,
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+
+                      Expanded(
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 6,
+                          separatorBuilder: (context, index) =>
+                               SizedBox(width: 8.w),
+                          itemBuilder: (context, index) {
+                            Color getColor(index) {
+                              switch (index) {
+                                case 0:
+                                  return AppColors.red;
+                                case 1:
+                                  return AppColors.green;
+                                case 2:
+                                  return AppColors.blueGrey;
+                                case 3:
+                                  return AppColors.blue;
+                                case 4:
+                                  return AppColors.orange;
+                                case 5:
+                                  return AppColors.purple;
+                                default:
+                                  return AppColors.grey;
+                              }
+                            }
+
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  currentIndex = index;
+                                });
+                              },
+                              child: CircleAvatar(
+                                backgroundColor: getColor(index),
+                                child: index == currentIndex
+                                    ? const Icon(Icons.check)
+                                    : null,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+
+                      //  const Row(
+                      //    children: [
+                      //      CircleAvatar(
+                      //       backgroundColor: AppColors.red,
+                      //      ),
+                      //      CircleAvatar(
+                      //       backgroundColor: AppColors.red,
+                      //      ),
+                      //    ],
+                      //  )
+                    ],
+                  ),
                 ),
-              )
-            ],
+                //! add Task Button
+
+                 SizedBox(height: 90.h),
+
+                SizedBox(
+                  height: 48.h,
+                  width: double.infinity,
+                  child: CustomButton(
+                    text: AppStrings.createTask,
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

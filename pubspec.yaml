@@ -32,6 +32,7 @@ dependencies:
   date_picker_timeline: ^1.2.5
   flutter:
     sdk: flutter
+  flutter_screenutil: ^5.8.4
   get_it: ^7.6.0
   google_fonts: ^5.1.0
   intl: ^0.18.1
