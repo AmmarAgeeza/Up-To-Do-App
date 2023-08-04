@@ -1,11 +1,13 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do_app/core/commons/commons.dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
 
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../add_task_screen/add_task_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(
-                height: 50,
+                height: 24,
               ),
               //no tasks
               // noTasksWidget(context),
@@ -79,6 +81,7 @@ class HomeScreen extends StatelessWidget {
                                 width: double.infinity,
                                 child: CustomButton(
                                   text: AppStrings.deleteTask,
+                                  backgroundColor: AppColors.red,
                                   onPressed: () {},
                                 ),
                               ),
@@ -106,7 +109,9 @@ class HomeScreen extends StatelessWidget {
         ),
         //fab
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            navigate(context: context, screen:  AddTaskScreen());
+          },
           backgroundColor: AppColors.primary,
           child: const Icon(Icons.add),
         ),

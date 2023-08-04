@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/services/service_locator.dart';
-import 'package:to_do_app/feature/task/presentation/screens/home_screen.dart';
+import 'package:to_do_app/feature/task/presentation/screens/home_screen/home_screen.dart';
 
 import '../../../../../core/database/cache/cache_helper.dart';
 import '../../../../../core/utils/app_assets.dart';

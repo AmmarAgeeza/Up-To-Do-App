@@ -9,7 +9,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_button.dart';
-import '../../../../task/presentation/screens/home_screen.dart';
+import '../../../../task/presentation/screens/home_screen/home_screen.dart';
 
 class OnBoaringScreens extends StatelessWidget {
   OnBoaringScreens({super.key});

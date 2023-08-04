@@ -34,9 +34,26 @@ ThemeData getAppTheme() {
         style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.primary,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4)))),
+                borderRadius: BorderRadius.circular(8)))),
+                inputDecorationTheme: InputDecorationTheme(
+                   //enabled border
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    //fouced border
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    //hint
+                    hintStyle: GoogleFonts.lato(
+        color: AppColors.white,
+        fontSize: 16,
+      ),
+                    //fill color
+                    fillColor: AppColors.lightBlack,
+                    filled: true
+                ),
   );
 }
+
 ThemeData getAppDarkTheme() {
   return ThemeData(
     primaryColor: AppColors.red,
