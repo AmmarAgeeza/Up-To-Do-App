@@ -11,9 +11,7 @@ import '../../cubit/task_cubit.dart';
 import '../../cubit/task_state.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  TextEditingController titleController = TextEditingController();
-
-  TextEditingController noteController = TextEditingController();
+  const AddTaskScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,35 +30,54 @@ class AddTaskScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
-      body: Form(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: BlocBuilder<TaskCubit, TaskState>(
-              builder: (context, state) {
-                final cubit =BlocProvider.of<TaskCubit>(context);
-                return Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: BlocConsumer<TaskCubit, TaskState>(
+            listener: (context, state) {
+              if (state is InsertTaskSucessState) {
+                Navigator.pop(context);
+              }
+            },
+            builder: (context, state) {
+              final cubit = BlocProvider.of<TaskCubit>(context);
+              return Form(
+                key: BlocProvider.of<TaskCubit>(context).formKey,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //! Title
                     AddTaskComponent(
-                      controller: titleController,
+                      controller:
+                          BlocProvider.of<TaskCubit>(context).titleController,
                       tilte: AppStrings.tilte,
                       hintText: AppStrings.tilteHint,
+                      validator: (val){
+                        if(val!.isEmpty){
+                      return AppStrings.tilteErrorMsg;
+                        }
+                        return null;
+                      },
                     ),
                     SizedBox(height: 24.h),
                     //! Note
                     AddTaskComponent(
-                      controller: noteController,
+                      controller:
+                          BlocProvider.of<TaskCubit>(context).noteController,
                       tilte: AppStrings.note,
                       hintText: AppStrings.notehint,
+                       validator: (val){
+                        if(val!.isEmpty){
+                      return AppStrings.noteErrorMsg;
+                        }
+                        return null;
+                      },
                     ),
                     SizedBox(height: 24.h),
                     //! Date
                     AddTaskComponent(
                       tilte: AppStrings.date,
-                      hintText: DateFormat.yMd().format(
-                          cubit.currentDate),
+                      hintText: DateFormat.yMd().format(cubit.currentDate),
                       suffixIcon: IconButton(
                         onPressed: () async {
                           BlocProvider.of<TaskCubit>(context).getDate(context);
@@ -166,18 +183,31 @@ class AddTaskScreen extends StatelessWidget {
 
                     SizedBox(height: 90.h),
 
-                    SizedBox(
-                      height: 48.h,
-                      width: double.infinity,
-                      child: CustomButton(
-                        text: AppStrings.createTask,
-                        onPressed: () {},
-                      ),
-                    )
+                    state is InsertTaskLoadingState
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                            color: AppColors.primary,
+                          ))
+                        : SizedBox(
+                            height: 48.h,
+                            width: double.infinity,
+                            child: CustomButton(
+                              text: AppStrings.createTask,
+                              onPressed: () {
+                                if (BlocProvider.of<TaskCubit>(context)
+                                    .formKey
+                                    .currentState!
+                                    .validate()) {
+                                  BlocProvider.of<TaskCubit>(context)
+                                      .insertTask();
+                                }
+                              },
+                            ),
+                          )
                   ],
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),
