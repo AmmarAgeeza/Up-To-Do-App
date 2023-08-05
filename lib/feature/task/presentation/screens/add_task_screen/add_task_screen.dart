@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
 
+import '../../../../../core/commons/commons.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../components/add_task_component.dart';
@@ -36,6 +38,8 @@ class AddTaskScreen extends StatelessWidget {
           child: BlocConsumer<TaskCubit, TaskState>(
             listener: (context, state) {
               if (state is InsertTaskSucessState) {
+                showToast(
+                    message: 'Added Sucessfully', state: ToastStates.success);
                 Navigator.pop(context);
               }
             },
@@ -52,9 +56,9 @@ class AddTaskScreen extends StatelessWidget {
                           BlocProvider.of<TaskCubit>(context).titleController,
                       tilte: AppStrings.tilte,
                       hintText: AppStrings.tilteHint,
-                      validator: (val){
-                        if(val!.isEmpty){
-                      return AppStrings.tilteErrorMsg;
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return AppStrings.tilteErrorMsg;
                         }
                         return null;
                       },
@@ -66,9 +70,9 @@ class AddTaskScreen extends StatelessWidget {
                           BlocProvider.of<TaskCubit>(context).noteController,
                       tilte: AppStrings.note,
                       hintText: AppStrings.notehint,
-                       validator: (val){
-                        if(val!.isEmpty){
-                      return AppStrings.noteErrorMsg;
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return AppStrings.noteErrorMsg;
                         }
                         return null;
                       },
