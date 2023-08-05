@@ -7,6 +7,7 @@ import 'package:to_do_app/core/widgets/custom_button.dart';
 
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../data/model/task_model.dart';
 import '../add_task_screen/add_task_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,67 +51,77 @@ class HomeScreen extends StatelessWidget {
                 height: 24,
               ),
               //no tasks
-              // noTasksWidget(context),
-              InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          padding: const EdgeInsets.all(24),
-                          height: 240,
-                          color: AppColors.deepGrey,
-                          child: Column(
-                            children: [
-                              //taskCompleted
-                              SizedBox(
-                                height: 48,
-                                width: double.infinity,
-                                child: CustomButton(
-                                  text: AppStrings.taskCompleted,
-                                  onPressed: () {},
+              TaskModel.tasksList.isEmpty?
+              noTasksWidget(context):
+              Expanded(
+                child: ListView.builder(
+                  itemCount: TaskModel.tasksList.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                padding: const EdgeInsets.all(24),
+                                height: 240,
+                                color: AppColors.deepGrey,
+                                child: Column(
+                                  children: [
+                                    //taskCompleted
+                                    SizedBox(
+                                      height: 48,
+                                      width: double.infinity,
+                                      child: CustomButton(
+                                        text: AppStrings.taskCompleted,
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 24,
+                                    ),
+              
+                                    //deleteTask
+                                    SizedBox(
+                                      height: 48,
+                                      width: double.infinity,
+                                      child: CustomButton(
+                                        text: AppStrings.deleteTask,
+                                        backgroundColor: AppColors.red,
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 24,
+                                    ),
+                                    //cancel
+                                    SizedBox(
+                                      height: 48,
+                                      width: double.infinity,
+                                      child: CustomButton(
+                                        text: AppStrings.cancel,
+                                        onPressed: () {},
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 24,
-                              ),
-
-                              //deleteTask
-                              SizedBox(
-                                height: 48,
-                                width: double.infinity,
-                                child: CustomButton(
-                                  text: AppStrings.deleteTask,
-                                  backgroundColor: AppColors.red,
-                                  onPressed: () {},
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 24,
-                              ),
-                              //cancel
-                              SizedBox(
-                                height: 48,
-                                width: double.infinity,
-                                child: CustomButton(
-                                  text: AppStrings.cancel,
-                                  onPressed: () {},
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    );
+                              );
+                            },
+                          );
+                        },
+                        child: TaskComponent(
+                          taskModel: TaskModel.tasksList[index],
+                        ));
                   },
-                  child: const TaskComponent()),
+                ),
+              ),
             ],
           ),
         ),
         //fab
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            navigate(context: context, screen:  AddTaskScreen());
+            navigate(context: context, screen: AddTaskScreen());
           },
           backgroundColor: AppColors.primary,
           child: const Icon(Icons.add),
@@ -141,15 +152,34 @@ class HomeScreen extends StatelessWidget {
 class TaskComponent extends StatelessWidget {
   const TaskComponent({
     super.key,
+    required this.taskModel,
   });
-
+  final TaskModel taskModel;
+  Color getColor(index) {
+    switch (index) {
+      case 0:
+        return AppColors.red;
+      case 1:
+        return AppColors.green;
+      case 2:
+        return AppColors.blueGrey;
+      case 3:
+        return AppColors.blue;
+      case 4:
+        return AppColors.orange;
+      case 5:
+        return AppColors.purple;
+      default:
+        return AppColors.grey;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 132,
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: AppColors.red,
+        color: getColor(taskModel.color),
         borderRadius: BorderRadius.circular(16),
       ),
       margin: const EdgeInsets.only(bottom: 16),
@@ -160,9 +190,9 @@ class TaskComponent extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //text
+                //title
                 Text(
-                  'Task 1',
+                  taskModel.title,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(height: 8),
@@ -177,15 +207,15 @@ class TaskComponent extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      '09:33 PM - 09:48 PM',
+                      '${taskModel.startTime} - ${taskModel.endTime}',
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
-                //text
+                //note
                 Text(
-                  'Learn Dart',
+                  taskModel.note,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ],
@@ -204,7 +234,7 @@ class TaskComponent extends StatelessWidget {
           RotatedBox(
             quarterTurns: 3,
             child: Text(
-              AppStrings.toDo,
+              taskModel.isCompleted ? AppStrings.completed : AppStrings.toDo,
               style: Theme.of(context).textTheme.displayMedium,
             ),
           )
