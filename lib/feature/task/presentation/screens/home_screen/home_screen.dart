@@ -76,15 +76,33 @@ class HomeScreen extends StatelessWidget {
                                           child: Column(
                                             children: [
                                               //taskCompleted
-                                              SizedBox(
-                                                height: 48,
-                                                width: double.infinity,
-                                                child: CustomButton(
-                                                  text:
-                                                      AppStrings.taskCompleted,
-                                                  onPressed: () {},
-                                                ),
-                                              ),
+                                              BlocProvider.of<TaskCubit>(
+                                                              context)
+                                                          .tasksList[index]
+                                                          .isCompleted ==
+                                                      1
+                                                  ? Container()
+                                                  : SizedBox(
+                                                      height: 48,
+                                                      width: double.infinity,
+                                                      child: CustomButton(
+                                                        text: AppStrings
+                                                            .taskCompleted,
+                                                        onPressed: () {
+                                                          BlocProvider.of<
+                                                                      TaskCubit>(
+                                                                  context)
+                                                              .updateTask(BlocProvider
+                                                                      .of<TaskCubit>(
+                                                                          context)
+                                                                  .tasksList[
+                                                                      index]
+                                                                  .id);
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                      ),
+                                                    ),
                                               const SizedBox(
                                                 height: 24,
                                               ),
@@ -109,7 +127,9 @@ class HomeScreen extends StatelessWidget {
                                                 width: double.infinity,
                                                 child: CustomButton(
                                                   text: AppStrings.cancel,
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
                                                 ),
                                               )
                                             ],
@@ -134,7 +154,7 @@ class HomeScreen extends StatelessWidget {
         //fab
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            navigate(context: context, screen: AddTaskScreen());
+            navigate(context: context, screen: const AddTaskScreen());
           },
           backgroundColor: AppColors.primary,
           child: const Icon(Icons.add),
@@ -248,7 +268,9 @@ class TaskComponent extends StatelessWidget {
           RotatedBox(
             quarterTurns: 3,
             child: Text(
-              taskModel.isCompleted ==1? AppStrings.completed : AppStrings.toDo,
+              taskModel.isCompleted == 1
+                  ? AppStrings.completed
+                  : AppStrings.toDo,
               style: Theme.of(context).textTheme.displayMedium,
             ),
           )

@@ -144,4 +144,17 @@ class TaskCubit extends Cubit<TaskState> {
       emit(GetDateErrorState());
     });
   }
+
+  //update Task
+  void updateTask(id) async {
+    emit(UpdateTaskLoadingState());
+
+    await sl<SqfliteHelper>().updatedDB(id).then((value) {
+      emit(UpdateTaskSucessState());
+      getTasks();
+    }).catchError((e) {
+      print(e.toString());
+      emit(UpdateTaskErrorState());
+    });
+  }
 }
