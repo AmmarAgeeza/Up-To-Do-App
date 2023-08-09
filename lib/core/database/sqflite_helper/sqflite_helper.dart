@@ -42,10 +42,10 @@ class SqfliteHelper {
   Future<int> insertToDB(TaskModel model) async {
     return await db.rawInsert('''
       INSERT INTO Tasks( 
-      title ,note ,date ,startTime ,endTime ,color ,isCompleted ,)
+      title ,note ,date ,startTime ,endTime ,color ,isCompleted )
          VALUES
-         (${model.title},${model.note},${model.date},${model.startTime},
-         ${model.endTime},${model.color},${model.isCompleted})''');
+         ('${model.title}','${model.note}','${model.date}','${model.startTime}',
+       '${model.endTime}','${model.color}','${model.isCompleted}')''');
   }
 
   //! update

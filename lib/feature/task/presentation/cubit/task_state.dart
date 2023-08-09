@@ -27,3 +27,8 @@ class InsertTaskLoadingState extends TaskState {}
 class InsertTaskSucessState extends TaskState {}
 
 class InsertTaskErrorState extends TaskState {}
+class GetTaskLoadingState extends TaskState {}
+
+class GetTaskSucessState extends TaskState {}
+
+class GetTaskErrorState extends TaskState {}

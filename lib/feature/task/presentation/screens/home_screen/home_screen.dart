@@ -248,7 +248,7 @@ class TaskComponent extends StatelessWidget {
           RotatedBox(
             quarterTurns: 3,
             child: Text(
-              taskModel.isCompleted ? AppStrings.completed : AppStrings.toDo,
+              taskModel.isCompleted ==1? AppStrings.completed : AppStrings.toDo,
               style: Theme.of(context).textTheme.displayMedium,
             ),
           )
