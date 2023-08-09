@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
-   CustomButton({super.key, required this.text, required this.onPressed,this.backgroundColor=AppColors.primary});
+  const CustomButton({super.key, required this.text, required this.onPressed,this.backgroundColor=AppColors.primary});
   final String text;
   final VoidCallback onPressed;
-  Color? backgroundColor;
+ final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
