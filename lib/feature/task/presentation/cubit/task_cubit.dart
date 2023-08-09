@@ -157,4 +157,17 @@ class TaskCubit extends Cubit<TaskState> {
       emit(UpdateTaskErrorState());
     });
   }
+
+//delete task
+void deleteTask(id)async{
+ emit(DeleteTaskLoadingState());
+
+    await sl<SqfliteHelper>().deleteFromDB(id).then((value) {
+      emit(DeleteTaskSucessState());
+      getTasks();
+    }).catchError((e) {
+      print(e.toString());
+      emit(DeleteTaskErrorState());
+    });
+}
 }

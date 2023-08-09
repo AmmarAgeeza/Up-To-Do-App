@@ -115,7 +115,17 @@ class HomeScreen extends StatelessWidget {
                                                   text: AppStrings.deleteTask,
                                                   backgroundColor:
                                                       AppColors.red,
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    BlocProvider.of<TaskCubit>(
+                                                            context)
+                                                        .deleteTask(BlocProvider
+                                                                .of<TaskCubit>(
+                                                                    context)
+                                                            .tasksList[index]
+                                                            .id);
+                                                            Navigator.pop(
+                                                              context);
+                                                  },
                                                 ),
                                               ),
                                               const SizedBox(
