@@ -46,10 +46,7 @@ class HomeScreen extends StatelessWidget {
                     dayTextStyle: Theme.of(context).textTheme.displayMedium!,
                     monthTextStyle: Theme.of(context).textTheme.displayMedium!,
                     onDateChange: (date) {
-                      // New date selected
-                      // setState(() {
-                      //   _selectedValue = date;
-                      // });
+                      BlocProvider.of<TaskCubit>(context).getSelectedDate(date);
                     },
                   ),
                   const SizedBox(
@@ -123,8 +120,7 @@ class HomeScreen extends StatelessWidget {
                                                                     context)
                                                             .tasksList[index]
                                                             .id);
-                                                            Navigator.pop(
-                                                              context);
+                                                    Navigator.pop(context);
                                                   },
                                                 ),
                                               ),

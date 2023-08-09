@@ -13,6 +13,8 @@ class GetStartTimeLoadingState extends TaskState {}
 class GetStartTimeSucessState extends TaskState {}
 
 class GetStartTimeErrorState extends TaskState {}
+class GetSelectedDateSucessState extends TaskState {}
+class GetSelectedDateLoadingState extends TaskState {}
 
 class GetEndTimeLoadingState extends TaskState {}
 
