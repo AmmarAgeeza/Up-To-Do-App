@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/app_colors.dart';
 
-ThemeData getAppTheme() {
+ThemeData getAppDarkTheme() {
   return ThemeData(
     primaryColor: AppColors.primary,
     //scaffoldBackgroundColor
@@ -54,29 +54,29 @@ ThemeData getAppTheme() {
   );
 }
 
-ThemeData getAppDarkTheme() {
+ThemeData getAppTheme() {
   return ThemeData(
-    primaryColor: AppColors.red,
+    primaryColor: AppColors.primary,
     //scaffoldBackgroundColor
-    scaffoldBackgroundColor: AppColors.red,
+    scaffoldBackgroundColor: AppColors.white,
     //appBar theme
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.white,
       centerTitle: true,
     ),
     //text theme
     textTheme: TextTheme(
       displayLarge: GoogleFonts.lato(
-        color: AppColors.white,
+        color: AppColors.background,
         fontWeight: FontWeight.bold,
         fontSize: 32,
       ),
       displayMedium: GoogleFonts.lato(
-        color: AppColors.white,
+        color: AppColors.background,
         fontSize: 16,
       ),
       displaySmall: GoogleFonts.lato(
-        color: AppColors.white.withOpacity(0.44),
+        color: AppColors.background.withOpacity(0.44),
         fontSize: 16,
       ),
     ),

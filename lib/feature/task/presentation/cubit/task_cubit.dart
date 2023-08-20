@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do_app/core/database/cache/cache_helper.dart';
 import 'package:to_do_app/core/database/sqflite_helper/sqflite_helper.dart';
 import 'package:to_do_app/feature/task/presentation/cubit/task_state.dart';
 
@@ -136,8 +137,7 @@ class TaskCubit extends Cubit<TaskState> {
       titleController.clear();
       noteController.clear();
       emit(InsertTaskSucessState());
-            getTasks();
-
+      getTasks();
     } catch (e) {
       emit(InsertTaskErrorState());
     }
@@ -186,4 +186,15 @@ class TaskCubit extends Cubit<TaskState> {
       emit(DeleteTaskErrorState());
     });
   }
+
+  bool isDark = false;
+  void changeTheme() async {
+    isDark = !isDark;
+    await sl<CacheHelper>().saveData(key: 'isDark', value: isDark);
+    emit(ChangeThemeState());
+  }
+ void getTheme()async{
+  isDark =await sl<CacheHelper>().getData(key: 'isDark');
+  emit(GetThemeState());
+ }
 }

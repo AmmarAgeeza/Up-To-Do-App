@@ -28,8 +28,24 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //date now
-                  Text(DateFormat.yMMMMd().format(DateTime.now()),
-                      style: Theme.of(context).textTheme.displayLarge),
+                  Row(
+                    children: [
+                      Text(DateFormat.yMMMMd().format(DateTime.now()),
+                          style: Theme.of(context).textTheme.displayLarge),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          BlocProvider.of<TaskCubit>(context).changeTheme();
+                        },
+                        icon: Icon(
+                          Icons.mode_night,
+                          color: BlocProvider.of<TaskCubit>(context).isDark
+                              ? AppColors.white
+                              : AppColors.background,
+                        ),
+                      )
+                    ],
+                  ),
                   const SizedBox(
                     height: 12,
                   ),
