@@ -80,9 +80,7 @@ class OnBoaringScreens extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
-                const SizedBox(
-                  height: 90,
-                ),
+                const Spacer(),
                 //buttons
                 Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/core/database/cache/cache_helper.dart';
 import 'package:to_do_app/core/database/sqflite_helper/sqflite_helper.dart';
+import 'package:to_do_app/core/services/local_notification_service.dart';
 import 'package:to_do_app/feature/task/presentation/cubit/task_state.dart';
 
 import '../../../../core/services/service_locator.dart';
@@ -42,6 +43,7 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
+  late TimeOfDay schduledTime;
   void getStartTime(context) async {
     emit(GetStartTimeLoadingState());
 
@@ -51,9 +53,12 @@ class TaskCubit extends Cubit<TaskState> {
     );
     if (pickedStartTime != null) {
       startTime = pickedStartTime.format(context);
+      schduledTime = pickedStartTime;
       emit(GetStartTimeSucessState());
     } else {
       print('pickedStartTime ==null');
+      schduledTime =
+          TimeOfDay(hour: currentDate.hour, minute: currentDate.minute);
       emit(GetStartTimeErrorState());
     }
   }
@@ -113,6 +118,19 @@ class TaskCubit extends Cubit<TaskState> {
     try {
       await sl<SqfliteHelper>().insertToDB(
         TaskModel(
+          date: DateFormat.yMd().format(currentDate),
+          title: titleController.text,
+          note: noteController.text,
+          startTime: startTime,
+          endTime: endTime,
+          isCompleted: 0,
+          color: currentIndex,
+        ),
+      );
+      LocalNotificationService.showSchduledNotification(
+        curretDate: currentDate,
+        schduledTime:schduledTime,
+        taskModel: TaskModel(
           date: DateFormat.yMd().format(currentDate),
           title: titleController.text,
           note: noteController.text,
@@ -193,8 +211,9 @@ class TaskCubit extends Cubit<TaskState> {
     await sl<CacheHelper>().saveData(key: 'isDark', value: isDark);
     emit(ChangeThemeState());
   }
- void getTheme()async{
-  isDark =await sl<CacheHelper>().getData(key: 'isDark');
-  emit(GetThemeState());
- }
+
+  void getTheme() async {
+    isDark = await sl<CacheHelper>().getData(key: 'isDark');
+    emit(GetThemeState());
+  }
 }

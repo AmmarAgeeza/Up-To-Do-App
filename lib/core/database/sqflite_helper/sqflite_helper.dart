@@ -17,7 +17,7 @@ class SqfliteHelper {
         //step 2 => create table
         return await db.execute('''
       CREATE TABLE Tasks (
-        id INTEGER PRIMARY KEY ,
+        id INTEGER PRIMARY KEY AUTOINCREMENT ,
         title TEXT,
         note TEXT,
         date TEXT,

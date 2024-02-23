@@ -77,94 +77,10 @@ class HomeScreen extends StatelessWidget {
                                 .tasksList
                                 .length,
                             itemBuilder: (context, index) {
-                              return InkWell(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          padding: const EdgeInsets.all(24),
-                                          height: 240,
-                                          color: AppColors.deepGrey,
-                                          child: Column(
-                                            children: [
-                                              //taskCompleted
-                                              BlocProvider.of<TaskCubit>(
-                                                              context)
-                                                          .tasksList[index]
-                                                          .isCompleted ==
-                                                      1
-                                                  ? Container()
-                                                  : SizedBox(
-                                                      height: 48,
-                                                      width: double.infinity,
-                                                      child: CustomButton(
-                                                        text: AppStrings
-                                                            .taskCompleted,
-                                                        onPressed: () {
-                                                          BlocProvider.of<
-                                                                      TaskCubit>(
-                                                                  context)
-                                                              .updateTask(BlocProvider
-                                                                      .of<TaskCubit>(
-                                                                          context)
-                                                                  .tasksList[
-                                                                      index]
-                                                                  .id);
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                      ),
-                                                    ),
-                                              const SizedBox(
-                                                height: 24,
-                                              ),
-
-                                              //deleteTask
-                                              SizedBox(
-                                                height: 48,
-                                                width: double.infinity,
-                                                child: CustomButton(
-                                                  text: AppStrings.deleteTask,
-                                                  backgroundColor:
-                                                      AppColors.red,
-                                                  onPressed: () {
-                                                    BlocProvider.of<TaskCubit>(
-                                                            context)
-                                                        .deleteTask(BlocProvider
-                                                                .of<TaskCubit>(
-                                                                    context)
-                                                            .tasksList[index]
-                                                            .id);
-                                                    Navigator.pop(context);
-                                                  },
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                height: 24,
-                                              ),
-                                              //cancel
-                                              SizedBox(
-                                                height: 48,
-                                                width: double.infinity,
-                                                child: CustomButton(
-                                                  text: AppStrings.cancel,
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: TaskComponent(
-                                    taskModel:
-                                        BlocProvider.of<TaskCubit>(context)
-                                            .tasksList[index],
-                                  ));
+                              return TaskComponent(
+                                taskModel: BlocProvider.of<TaskCubit>(context)
+                                    .tasksList[index],
+                              );
                             },
                           ),
                         ),
@@ -231,72 +147,137 @@ class TaskComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 132,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: getColor(taskModel.color),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        children: [
-          //column
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title
-                Text(
-                  taskModel.title,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-                const SizedBox(height: 8),
+    return InkWell(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: const EdgeInsets.all(24),
+              height: 240,
+              color: AppColors.deepGrey,
+              child: Column(
+                children: [
+                  //taskCompleted
+                  taskModel.isCompleted == 1
+                      ? Container()
+                      : SizedBox(
+                          height: 48,
+                          width: double.infinity,
+                          child: CustomButton(
+                            text: AppStrings.taskCompleted,
+                            onPressed: () {
+                              BlocProvider.of<TaskCubit>(context)
+                                  .updateTask(taskModel.id);
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                  const SizedBox(
+                    height: 24,
+                  ),
 
-                //row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Icon(
-                      Icons.timer,
-                      color: AppColors.white,
+                  //deleteTask
+                  SizedBox(
+                    height: 48,
+                    width: double.infinity,
+                    child: CustomButton(
+                      text: AppStrings.deleteTask,
+                      backgroundColor: AppColors.red,
+                      onPressed: () {
+                        BlocProvider.of<TaskCubit>(context)
+                            .deleteTask(taskModel.id);
+                        Navigator.pop(context);
+                      },
                     ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '${taskModel.startTime} - ${taskModel.endTime}',
-                      style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  //cancel
+                  SizedBox(
+                    height: 48,
+                    width: double.infinity,
+                    child: CustomButton(
+                      text: AppStrings.cancel,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                //note
-                Text(
-                  taskModel.note,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-              ],
-            ),
-          ),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      },
+      child: Container(
+        height: 132,
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: getColor(taskModel.color),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        margin: const EdgeInsets.only(bottom: 16),
+        child: Row(
+          children: [
+            //column
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //title
+                  Text(
+                    taskModel.title,
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                  const SizedBox(height: 8),
 
-          //divider
-          Container(
-            height: 75,
-            width: 1,
-            color: Colors.white,
-            margin: const EdgeInsets.only(right: 10),
-          ),
-          // const SizedBox(width: 10,),
-          //text
-          RotatedBox(
-            quarterTurns: 3,
-            child: Text(
-              taskModel.isCompleted == 1
-                  ? AppStrings.completed
-                  : AppStrings.toDo,
-              style: Theme.of(context).textTheme.displayMedium,
+                  //row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.timer,
+                        color: AppColors.white,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${taskModel.startTime} - ${taskModel.endTime}',
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  //note
+                  Text(
+                    taskModel.note,
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
+
+            //divider
+            Container(
+              height: 75,
+              width: 1,
+              color: Colors.white,
+              margin: const EdgeInsets.only(right: 10),
+            ),
+            // const SizedBox(width: 10,),
+            //text
+            RotatedBox(
+              quarterTurns: 3,
+              child: Text(
+                taskModel.isCompleted == 1
+                    ? AppStrings.completed
+                    : AppStrings.toDo,
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
