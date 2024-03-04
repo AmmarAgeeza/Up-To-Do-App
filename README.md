@@ -1,8 +1,8 @@
 # ✔️ Up To Do App
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=Up-To-Do-App&label=People%20who%20visited%20this%20page&countColor=%23263759)
-[![GitHub followers](https://img.shields.io/github/followers/AmmarAgeeza?logo=GitHub&style=for-the-badge)][github]
-[![Linkedin: AmmarAgeeza](https://img.shields.io/badge/-CONNECT-blue?style=for-the-badge&logo=Linkedin&link=www.linkedin.com/in/ammar-ageeza)][linkedin]
+[GitHubfollowers](https://img.shields.io/github/followers/AmmarAgeeza?logo=GitHub&style=for-the-badge)
+[Linkedin:AmmarAgeeza](https://img.shields.io/badge/-CONNECT-blue?style=for-the-badge&logo=Linkedin&link=www.linkedin.com/in/ammar-ageeza)
 <br> <br>
 
 ## 🚀 Getting Started
