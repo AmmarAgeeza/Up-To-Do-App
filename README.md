@@ -1,5 +1,6 @@
 # ✔️ Up To Do App
-![Visitors](https://api.visitorbadge.io/api/visitors?path=Up-To-Do-App&label=People%20who%20visited%20this%20page&countColor=%23263759)  <br> <br>
+
+![Visitors](https://api.visitorbadge.io/api/visitors?path=Up-To-Do-App&label=People%20who%20visited%20this%20page&countColor=%23263759) <br> <br>
 
 ## 🚀 Getting Started
 
