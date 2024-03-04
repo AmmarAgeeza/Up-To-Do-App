@@ -30,3 +30,6 @@
     ```bash
     flutter run
     ```
+## 📁 File Structure
+
+![image](https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/6bf5b32f-abb6-4a88-b96c-e67133dc7618)
