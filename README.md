@@ -60,7 +60,7 @@
 
 ## 🎥 Video
 
-https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/45a06dd8-c2a0-4f23-9402-e31802f7f397
+https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/47054951-596b-4fe5-9eff-03abf357f8fe
 
 ## 🛠 Dependencies
 
