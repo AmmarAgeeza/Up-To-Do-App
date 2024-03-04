@@ -28,6 +28,13 @@
 - App notifies the user of the task before starting using `flutter_local_notifications`.
 - Our App reminds users every day at 9 PM ⏰to write tasks for tomorrow.
 
+## 🤳 Screens
+
+- **Splash Screen:** Wait for 3 seconds then navigate to `On-Boarding Screens`. 
+- **On-Boarding Screens:** Provide a seamless and engaging introduction to our app.
+- **Home Screen:** The User can discover all tasks that he added before and can change the status to `COMPLETED` or `DELETED`.
+- **Add Task:** User can add task details like `title`, `note`, `date`, `start time`, and `end time`.
+
 <hr>
 <h3>
   <a href="https://www.youtube.com/watch?v=eRK9pI98EUk&list=PLYfTCw9blWRNh4jiQO3kVNd34jUD6MD9m&index=1&t=4s&pp=gAQBiAQB">
@@ -41,12 +48,6 @@
      </kbd>
   </a>
 
-## 🤳 Screens
-
-- **Splash Screen:** Wait for 3 seconds then navigate to `On-Boarding Screens`. 
-- **On-Boarding Screens:** Provide a seamless and engaging introduction to our app.
-- **Home Screen:** The User can discover all tasks that he added before and can change the status to `COMPLETED` or `DELETED`.
-- **Add Task:** User can add task details like `title`, `note`, `date`, `start time`, and `end time`.
 
 ## 📁 File Structure
 
