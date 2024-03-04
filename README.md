@@ -16,9 +16,6 @@
      <a href="https://mostaql.com/u/ammarageeza/portfolio">
     <img src="https://img.shields.io/badge/Portfolio-0077B5?style=for-the-badge&logoColor=white" />
   </a>
-     <a href="https://drive.google.com/file/d/1VTbFAOr5PnumF8hJ6di74JymUhO09n3v/view?usp=drive_link">
-    <img src="https://img.shields.io/badge/Resume-333333?style=for-the-badge&logoColor=white" />
-  </a>
      </a>
      <a href="https://t.me/ammarageeza">
     <img src="https://img.shields.io/badge/Telegram-0077B5?style=for-the-badge&logo=telegram&logoColor=white" />
