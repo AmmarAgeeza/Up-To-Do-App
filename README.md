@@ -9,19 +9,17 @@
 
 <hr>
 <h3>
-  <a href="https://www.udemy.com/course/flutter-210firebase-build-a-grocery-app-with-admin-panel/?referralCode=B6FA32F8946EF083C9A2">
-    👨🏻‍🎓 Get this course on udemy
+  <a href="https://www.youtube.com/watch?v=eRK9pI98EUk&list=PLYfTCw9blWRNh4jiQO3kVNd34jUD6MD9m&index=1&t=4s&pp=gAQBiAQB">
+    👨🏻‍🎓 Get this app on YouTube Playlist Tutorials
   </a>
 </h3>
 <p align= "center">
-    <a href="https://github.com/hadikachmar3/grocery_admin_panel_course">
+    <a href="https://www.youtube.com/watch?v=eRK9pI98EUk&list=PLYfTCw9blWRNh4jiQO3kVNd34jUD6MD9m&index=1&t=4s&pp=gAQBiAQB">
      <kbd>
-        <img height= "150" src="https://user-images.githubusercontent.com/38382273/171286502-66810061-f1cd-4c33-9e73-9ff856459226.png" alt="Flutter grocery admin panel">
-        <br>
-        <font size="1"> Press here for the Admin Panel <br> source code </font>
+        <img height= "150" src="https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/0f267f9e-d2a3-41c6-8a4b-17a0b12abd6d" alt="Get this app on YouTube Playlist Tutorials">
      </kbd>
   </a>
-    
+
 ## 🤳 Screens
 
 - **Splash Screen:** Wait for 3 seconds then navigate to `On-Boarding Screens`. 
