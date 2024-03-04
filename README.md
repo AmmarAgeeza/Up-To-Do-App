@@ -7,6 +7,21 @@
 - Up-To-Do App is designed to help users organize their tasks efficiently and stay productive throughout their day. Whether it's managing daily tasks, work assignments, or personal goals.
 - App notifies the user of the task before starting using `flutter_local_notifications`.
 
+<hr>
+<h3>
+  <a href="https://www.udemy.com/course/flutter-210firebase-build-a-grocery-app-with-admin-panel/?referralCode=B6FA32F8946EF083C9A2">
+    👨🏻‍🎓 Get this course on udemy
+  </a>
+</h3>
+<p align= "center">
+    <a href="https://github.com/hadikachmar3/grocery_admin_panel_course">
+     <kbd>
+        <img height= "150" src="https://user-images.githubusercontent.com/38382273/171286502-66810061-f1cd-4c33-9e73-9ff856459226.png" alt="Flutter grocery admin panel">
+        <br>
+        <font size="1"> Press here for the Admin Panel <br> source code </font>
+     </kbd>
+  </a>
+    
 ## 🤳 Screens
 
 - **Splash Screen:** Wait for 3 seconds then navigate to `On-Boarding Screens`. 
@@ -45,7 +60,7 @@
 ## 🛠 Dependencies
 
 ```pubspec.yaml
- date_picker_timeline: 
+  date_picker_timeline: 
   flutter_bloc: 
   flutter_screenutil: 
   fluttertoast: 
@@ -60,3 +75,9 @@
   flutter_timezone: 
   workmanager: 
 ```
+
+## 🚨 Contributing
+
+- Contributions are welcome 💜
+- If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
