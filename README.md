@@ -58,6 +58,10 @@
 
 ![3](https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/a0583e2a-5a9e-4852-ac85-1bd9ec0d312b)
 
+## 🎥 Video
+
+![Activity Ammar Ageeza LinkedIn](https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/073d76fa-e604-4b7c-8d6f-5353ffabf9e2)
+
 ## 🛠 Dependencies
 
 ```pubspec.yaml
