@@ -2,6 +2,10 @@
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=Up-To-Do-App&label=People%20who%20visited%20this%20page&countColor=%23263759) <br> <br>
 
+[![GitHub followers](https://img.shields.io/github/followers/AmmarAgeeza?logo=GitHub&style=for-the-badge)][github]
+[![GitHub visitor](http://estruyf-github.azurewebsites.net/api/VisitorHit?user=AmmarAgeeza&repo=Up-To-Do-App&Bgstatic&countColorcountColor&countColor=%23007EC6)][github]
+[![Linkedin: AmmarAgeeza](https://img.shields.io/badge/-CONNECT-blue?style=for-the-badge&logo=Linkedin&link=www.linkedin.com/in/ammar-ageeza)][linkedin]
+
 ## 🚀 Getting Started
 
 - Up-To-Do App is designed to help users organize their tasks efficiently and stay productive throughout their day. Whether it's managing daily tasks, work assignments, or personal goals.
