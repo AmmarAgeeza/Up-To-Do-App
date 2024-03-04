@@ -48,22 +48,6 @@
 - **Home Screen:** The User can discover all tasks that he added before and can change the status to `COMPLETED` or `DELETED`.
 - **Add Task:** User can add task details like `title`, `note`, `date`, `start time`, and `end time`.
 
-## ☢️ Usage
-
-1. **Clone the repository**
-
-2. **Open the project in your preferred Flutter IDE.**
-
-3. **Explore the `lib` directory:**
-
-    - Review the project structure to understand the core of the app.
-    - Customize the app of your need.
-
-4. **Run the app on an emulator or physical device:**
-
-    ```bash
-    flutter run
-    ```
 ## 📁 File Structure
 
 ![image](https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/6bf5b32f-abb6-4a88-b96c-e67133dc7618)
@@ -92,6 +76,23 @@
   flutter_timezone: 
   workmanager: 
 ```
+
+## ☢️ Usage
+
+1. **Clone the repository**
+
+2. **Open the project in your preferred Flutter IDE.**
+
+3. **Explore the `lib` directory:**
+
+    - Review the project structure to understand the core of the app.
+    - Customize the app of your need.
+
+4. **Run the app on an emulator or physical device:**
+
+    ```bash
+    flutter run
+    ```
 
 ## 🚨 Contributing
 
