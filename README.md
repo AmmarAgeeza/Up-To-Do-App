@@ -42,3 +42,21 @@
 
 ![3](https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/a0583e2a-5a9e-4852-ac85-1bd9ec0d312b)
 
+## 🛠 Dependencies
+
+```pubspec.yaml
+ date_picker_timeline: 
+  flutter_bloc: 
+  flutter_screenutil: 
+  fluttertoast: 
+  get_it: 
+  google_fonts: 
+  intl: 
+  shared_preferences: 
+  smooth_page_indicator: 
+  sqflite: 
+  flutter_local_notifications: 
+  timezone: 
+  flutter_timezone: 
+  workmanager: 
+```
