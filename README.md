@@ -60,7 +60,7 @@
 
 ## 🎥 Video
 
-![Activity Ammar Ageeza LinkedIn](https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/073d76fa-e604-4b7c-8d6f-5353ffabf9e2)
+https://github.com/AmmarAgeeza/Up-To-Do-App/assets/72443818/45a06dd8-c2a0-4f23-9402-e31802f7f397
 
 ## 🛠 Dependencies
 
