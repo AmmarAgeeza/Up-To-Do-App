@@ -12,4 +12,4 @@
 - **Splash Screen:** Wait for 3 seconds then navigate to `On-Boarding Screens`. 
 - **On-Boarding Screens:** Provide a seamless and engaging introduction to our app.
 - **Home Screen:** The User can discover all tasks that he added before and can change the status to `COMPLETED` or `DELETED`.
-- **Add Task:** User can add task details like title, note, date, start time, end time.
+- **Add Task:** User can add task details like `title`, `note`, `date`, `start time`, and `end time`.
