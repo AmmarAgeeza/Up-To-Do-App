@@ -1,9 +1,27 @@
 # ✔️ Up To Do App
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=Up-To-Do-App&label=People%20who%20visited%20this%20page&countColor=%23263759)
-[GitHubfollowers](https://img.shields.io/github/followers/AmmarAgeeza?logo=GitHub&style=for-the-badge)
-[Linkedin:AmmarAgeeza](https://img.shields.io/badge/-CONNECT-blue?style=for-the-badge&logo=Linkedin&link=www.linkedin.com/in/ammar-ageeza)
-<br> <br>
+<div align="center">
+    <a href="https://www.linkedin.com/in/ammar-ageeza-9031891b8/" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
+    </a>
+  <a href="mailto:ammarfathy516@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red" />
+  </a>
+    <a href="https://youtube.com/@ammarageeza91?si=bHNizIHn9dIL3jX7">
+    <img src="https://img.shields.io/badge/Youtube-red?style=for-the-badge&logo=youtube&logoColor=white" />
+  </a>
+     <a href="https://mostaql.com/u/ammarageeza/portfolio">
+    <img src="https://img.shields.io/badge/Portfolio-0077B5?style=for-the-badge&logoColor=white" />
+  </a>
+     <a href="https://drive.google.com/file/d/1VTbFAOr5PnumF8hJ6di74JymUhO09n3v/view?usp=drive_link">
+    <img src="https://img.shields.io/badge/Resume-333333?style=for-the-badge&logoColor=white" />
+  </a>
+     </a>
+     <a href="https://t.me/ammarageeza">
+    <img src="https://img.shields.io/badge/Telegram-0077B5?style=for-the-badge&logo=telegram&logoColor=white" />
+  </a>
+</div>
 
 ## 🚀 Getting Started
 
